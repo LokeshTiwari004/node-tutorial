@@ -1,15 +1,25 @@
-const { read, readFile } = require('fs');
+// const { read, readFile } = require('fs');
 
-const { reaFile, writeFile } = require('fs').promises;
+const { readFile, writeFile } = require('fs').promises;
 
 
 
 
 const start = async () => {
-  const first = await readFile('./content/first.txt', 'utf8')
-  const second = await readFile('./content/second.txt', 'utf8')
+  try {
+    const first = readFile('./content/first.txt', 'utf8')
+    const second = readFile('./content/second.txt', 'utf8')
 
-  console.log(first, second);
+    await writeFile(
+      './content/result-async-await.txt',
+      `Result Async Await: ${await first}, ${await second}`,
+      { flag: 'a' }
+    )
+    console.log(await first, await second)
+
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 console.log(1);
