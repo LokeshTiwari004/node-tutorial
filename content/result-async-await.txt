@@ -1,2 +1,1 @@
-Result by simplest pattern: first file second file 
-Result Async Await: first file, second fileResult Async Await: first file, second file
+Result Async Await: first file, second file
