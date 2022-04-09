@@ -1,0 +1,1 @@
+Result by simplest pattern: first file second file 

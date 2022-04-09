@@ -1,41 +1,18 @@
-const { readFile, writeFile } = require('fs')
+const { readFile, writeFile } = require('fs').promises;
+let t;
 
-const read = (path, data) => {
-  return new Promise((resolve, reject) => {
-    readFile(path, 'utf8', (err, result) => {
-      if (err) {
-        reject(err)
-      } else {
-        data.unshift(result)
-        resolve(data)
-      }
-    })
-  })
-}
+const start = async () => {
+  const first =  readFile('./content/first.txt', 'utf8')
+  const second =  readFile('./content/second.txt', 'utf8')
 
-const write = (path, data) => {
-  return new Promise((resolve, reject) => {
-    writeFile(
-        path,
-        `Another result: ${data.join(' ')}`,
-        // {flag: 'a'},
-        (err, result) => {
-          if (err) {
-            reject(err)
-          } else {
-            resolve(result)
-          }
-        }
-      )
-  })
+  await writeFile(
+    './content/result-async-await.txt',
+    `Result by simplest pattern: ${await first} ${ await second} \n`,
+    // {flag: 'a'}
+  )
+  console.log(await first, await second);
 }
 
 console.log(1);
-read('./content/first.txt', [])
-  .then((value) => {
-    return read('./content/second.txt', value)
-  })
-  .then((value) => {
-    return write('./content/result-async-promisised.txt', value)
-  })
+start();
 console.log(2);
