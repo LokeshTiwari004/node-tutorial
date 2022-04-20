@@ -1,5 +1,3 @@
-// const { read, readFile } = require('fs');
-
 const { readFile, writeFile } = require('fs').promises;
 
 
@@ -13,9 +11,9 @@ const start = async () => {
     
     await writeFile(
       './content/result-async-await.txt',
-      `Result Async Await: ${await first}, ${await second}`,
-      { flag: 'a' }
-      )
+      `Result Async Await: ${await first}, ${await second} \n`,
+      // { flag: 'a' }
+    )
       
     console.log(await first, await second)
   
