@@ -9,6 +9,6 @@ stream.on('data', (data) => {
     console.log(data)
 })
 
-// stream.on('error', (error) => {
-//     console.error(error)
-// })
+stream.on('error', (error) => {
+    console.error(error)
+})
