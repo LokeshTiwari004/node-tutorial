@@ -29,6 +29,24 @@ app.get('/api/products/:productID', (req, res)=> {
     res.json(specificProduct);
 })
 
+
+app.get('/api/v1/filter', (req, res) => {
+    // console.log(req.query);
+    const {search, limit} = req.query;
+    let newProducts = [...products];
+    if (search) {
+        newProducts = newProducts.filter((product) => product.name.startsWith(search));
+        console.log(newProducts);
+    }
+
+    if (limit) {
+        newProducts = newProducts.slice(0, Number(limit));
+    }
+
+    res.status(200).json(newProducts)
+})
+
+
 app.listen(3000, () => {
     console.log("Server is Listening On PORT 3000...");
 })
