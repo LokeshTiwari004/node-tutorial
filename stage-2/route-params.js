@@ -4,17 +4,10 @@ const app = express();
 const { products, people } = require('./data.js');
 
 app.get('/', (req, res) => {
-    res.send('<h1>Hello</h1><a href="/api/products">Products</a>')
+    res.send('<h1>Route Params Example</h1><a href="/api/products/1">Products</a>')
 })
 
-app.get('/api/products', (req, res) => {
-    const newProducts = products.map((product) => {
-        const { id, name, image } = product
-        return { id, name, image }
-    })
-    res.json(newProducts);
-})
-
+// ---------Here is the example of Route Params
 app.get('/api/products/:productID', (req, res)=> {
     // console.log(req.params);
     const { productID } = req.params;
