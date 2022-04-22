@@ -15,20 +15,6 @@ app.get('/api/products', (req, res) => {
     res.json(newProducts);
 })
 
-app.get('/api/products/:productID', (req, res)=> {
-    console.log(req.params);
-    const { productID } = req.params;
-    
-    const specificProduct = products.find((product) => product.id === Number(productID))
-    
-    if (!specificProduct) {
-        res.status(404).send('Cannot find that Product');
-        return
-    }
-
-    res.json(specificProduct);
-})
-
 app.listen(3000, () => {
     console.log("Server is Listening On PORT 3000...");
 })
