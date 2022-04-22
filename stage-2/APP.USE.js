@@ -2,7 +2,6 @@ const express = require("express");
 const app = express();
 
 const logger = require('./logger')
-const authorize = require('./authorize')
 
 // ---- order or position of app.use() in code matters
 
